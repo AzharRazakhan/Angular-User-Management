@@ -1,0 +1,39 @@
+<div class="layout">
+    <div class="sidebar-overlay" *ngIf="isMenuOpen" (click)="toggleMenu()"></div>
+
+    <aside class="sidebar" [class.open]="isMenuOpen">
+        <div class="logo">YOCO<br /></div>
+
+        <nav>
+            <a (click)="handleLinkClick()" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+            <a (click)="handleLinkClick()">Reports & Analytics</a>
+            <a (click)="handleLinkClick()" routerLink="/users" routerLinkActive="active">Users</a>
+            <a (click)="handleLinkClick()">Emergency</a>
+            <a (click)="handleLinkClick()">Complaints</a>
+            <a (click)="handleLinkClick()">Attendance</a>
+            <a (click)="handleLinkClick()">Leaves</a>
+            <a (click)="handleLinkClick()">Hostel Mess</a>
+            <a (click)="handleLinkClick()">Fees</a>
+            <a (click)="handleLinkClick()">Amenities</a>
+            <a (click)="handleLinkClick()">Inventory</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <header class="topbar">
+            <button class="menu-btn" (click)="toggleMenu()">
+                ☰
+            </button>
+
+            <div class="search-container">
+                <input type="text" placeholder="Search...">
+            </div>
+
+            <div class="profile">Admin User</div>
+        </header>
+
+        <div class="main-body">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>

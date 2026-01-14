@@ -1,0 +1,134 @@
+/* Variables for consistency */
+:root {
+  --bg-sidebar: #1a1a2e;
+  --text-light: #ffffff;
+  --bg-card: #ffffff;
+  --border: #e2e8f0;
+  --radius-sm: 8px;
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* SIDEBAR - Desktop */
+.sidebar {
+  width: 260px;
+  background: var(--bg-sidebar);
+  color: var(--text-light);
+  padding: 16px;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.logo span { font-weight: 400; font-size: 14px; opacity: 0.7; }
+
+nav a {
+  display: block;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+}
+
+nav a.active, nav a:hover {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+/* MAIN CONTENT AREA */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fd;
+  overflow-y: auto;
+}
+
+.topbar {
+  height: 64px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.menu-btn {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.search-container input {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.profile { margin-left: auto; font-weight: 500; }
+
+.main-body { padding: 20px; }
+
+/* ================================
+   RESPONSIVE QUERIES
+   ================================ */
+
+@media (max-width: 768px) {
+  /* Hide Sidebar off-screen */
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-100%); /* Move out of view */
+    width: 260px;
+  }
+
+  .sidebar.open {
+    transform: translateX(0); /* Slide in */
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+  }
+
+  .menu-btn {
+    display: block; /* Show menu button on mobile */
+  }
+
+  .topbar {
+    padding: 0 16px;
+  }
+
+  .search-container {
+    display: none; /* Hide search on small mobile to save space, or make it an icon */
+  }
+}
+
+/* Tablet sizing */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sidebar { width: 200px; }
+}
